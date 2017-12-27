@@ -1,0 +1,25 @@
+{
+  "name": "quik-chat",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "socket.io": "^2.0.4",
+    "uuid-v4": "^0.1.0"
+  },
+  "scripts": {
+    "start": "node server",
+    "dev-server": "concurrently \"yarn server\" \"yarn react\"",
+    "server": "nodemon src/server",
+    "react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {}
+}
