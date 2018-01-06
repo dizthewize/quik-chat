@@ -19,7 +19,7 @@ class Home extends Component {
   }
 
   initSocket = () => {
-    const socket = io(socketUrl)
+    const socket = io()
     socket.on('connect', () => {
       console.log('Connected')
     })
