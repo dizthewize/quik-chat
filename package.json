@@ -15,12 +15,14 @@
   "scripts": {
     "start": "node src/server",
     "dev-server": "concurrently \"yarn server\" \"yarn react\"",
-    "server": "nodemon src/server",
+    "server": "cross-env NODE_ENV=dev nodemon src/server",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn run build"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^5.1.3"
+  }
 }

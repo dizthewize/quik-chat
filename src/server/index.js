@@ -1,21 +1,27 @@
-const app = require('http').createServer()
-const io = module.exports.io = require('socket.io')(app)
+const express = require('express')
+const app = express()
+const http = require('http')
+const socketIO = require('socket.io')
+const path = require('path');
 
 const PORT = process.env.PORT || 5000
 
-const SocketManager = require('./SocketManager')
-
-io.on('connection', SocketManager)
+const server = http.createServer(app)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
 
-  const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`Server Starts on ${PORT}`);
-});
+const io = socketIO(server)
+
+module.exports.io = io;
+
+const SocketManager = require('./SocketManager')
+
+io.on('connection', SocketManager)
+
+server.listen(PORT, () => console.log(`server has started on ${PORT}`));
