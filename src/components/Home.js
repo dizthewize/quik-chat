@@ -4,7 +4,7 @@ import { USER_CONNECTED, LOGOUT } from "../Const";
 import LoginForm from './LoginForm';
 import ChatContainer from './chats/ChatContainer';
 
-const socketUrl = 'https://react-quik-chat.herokuapp.com/';
+const socketUrl = 'https://react-quik-chat.herokuapp.com';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class Home extends Component {
   }
 
   initSocket = () => {
-    const socket = io()
+    const socket = io.connect(socketUrl)
     socket.on('connect', () => {
       console.log('Connected')
     })
