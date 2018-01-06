@@ -13,13 +13,14 @@
     "uuid-v4": "^0.1.0"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node src/server",
     "dev-server": "concurrently \"yarn server\" \"yarn react\"",
     "server": "nodemon src/server",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
   "devDependencies": {}
 }
